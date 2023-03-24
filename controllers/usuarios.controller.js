@@ -12,11 +12,13 @@ const usuariosGet = (req,res)=>{
     });
 }
 
-const usuariosPost = (req,res)=>{
+const usuariosPost = async(req,res)=>{
 
     const body = req.body;
 
     const usuario = new Usuario(body);
+
+    await usuario.save();
 
     res.json({
         msg:'post api -controlador',
