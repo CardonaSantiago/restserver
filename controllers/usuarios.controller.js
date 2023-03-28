@@ -73,9 +73,18 @@ const usuariosPatch = (req,res)=>{
     });
 }
 
-const usuariosDelete = (req,res)=>{
-    res.json({
-        msg:'Delete api -controlador'
+const usuariosDelete = async(req,res)=>{
+    
+    const { id } = req.params;
+    
+    // borrando fisicamente no recomendable
+    //const usuario =  await Usuario.findByIdAndDelete( id );
+
+    const usuario =  await Usuario.findByIdAndUpdate( id, { estado: false })
+
+
+    res.json({      
+        usuario
     });
 }
 
