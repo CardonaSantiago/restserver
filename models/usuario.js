@@ -22,7 +22,7 @@ const UsuarioSchema = Schema({
     rol:{
         type: String,
         required: [true, 'El rol es obligatorio'],
-        enum: ['Admin_Rol','User_Rol','Ventas_rol']
+        enum: ['Admin_rol','User_rol','Ventas_rol']
     },
     estado:{
         type: Boolean,
