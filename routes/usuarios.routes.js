@@ -3,7 +3,7 @@ const { check } = require('express-validator');
 
 const { validarCampos } = require('../middlewares/validar.campos');
 const { esRoleValido, EmailExiste, ExisteUsuarioPorId } = require('../helpers/db-validators');
-const { esAdminRol } = require('../middlewares/validar-roles');
+const { esAdminRol, tieneRol } = require('../middlewares/validar-roles');
 
 const { validarJWT } = require('../middlewares/validar-jwt');
 
@@ -33,7 +33,8 @@ router.post('/',[
 
 router.delete('/:id',[
     validarJWT,
-    esAdminRol,
+    // esAdminRol, // middleware que fuerza al usuario a ser admin
+    tieneRol('Admin_rol', 'Ventas_rol'),
     check('id', 'No es un id valido').isMongoId(),
     check('id').custom(ExisteUsuarioPorId),
     validarCampos
