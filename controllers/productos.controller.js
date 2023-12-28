@@ -17,6 +17,7 @@ const ObtenerProductos =  async(req, res)=>{
         .skip(Number(desde))
         .limit(Number(limit))
         .populate("usuario","nombre")
+        .populate("categoria","nombre")
     ])
     res.json({
         total,
@@ -27,7 +28,9 @@ const ObtenerProductos =  async(req, res)=>{
 
 const ObtenerProducto = async(req, res)=>{
     const { id }  = req.params;
-    const producto = await Producto.findById( id ).populate("usuario", "nombre");
+    const producto = await Producto.findById( id )
+                            .populate("usuario", "nombre")
+                            .populate("categoria","nombre");
 
     if(!producto){
         console.log(producto);
@@ -45,7 +48,9 @@ const ObtenerProducto = async(req, res)=>{
 const CrearProducto = async(req,res)=>{
     const {estado, usuario, ...body} = req.body;
 
-    const productoDB = await Producto.findOne({nombre: body.nombre});
+    const nombre =  body.nombre.toUpperCase();
+
+    const productoDB = await Producto.findOne({nombre});
 
     if(productoDB){
         return res.status(400).json({
@@ -76,6 +81,10 @@ const ActualizarProducto= async(req, res)=>{
     
     const { id }  = req.params;
     const {estado, usuario, ...data } = req.body;
+
+    if (data.nombre) {
+        data.nombre = data.nombre.toUpperCase();
+    }
 
     data.nombre = data.nombre.toUpperCase();
     data.usuario = req.usuario._id;
