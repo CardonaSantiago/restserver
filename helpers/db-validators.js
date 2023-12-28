@@ -1,4 +1,5 @@
 const Categoria = require('../models/categoria');
+const producto = require('../models/producto');
 const Role = require('../models/role')
 const Usuario = require('../models/usuario')
 
@@ -29,6 +30,8 @@ const ExisteUsuarioPorId = async(id = '')=>{
     }   
 }
 
+
+// Validador personalizado de categorias
 const existeCategoria = async(id = '')=>{
 
     const Existecate = await Categoria.findById( id );
@@ -38,9 +41,22 @@ const existeCategoria = async(id = '')=>{
     }
 }
 
+
+//Validar personalizado de productos
+
+const existeProducto = async(id = '')=>{
+
+    const Existeprod = await producto.findById( id );
+
+    if(!Existeprod){
+        throw new Error (`El id: ${ id } no existe`);
+    }
+}
+
 module.exports = {
     esRoleValido,
     EmailExiste,
     ExisteUsuarioPorId,
-    existeCategoria
+    existeCategoria,
+    existeProducto
 }
