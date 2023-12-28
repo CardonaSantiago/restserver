@@ -1,5 +1,5 @@
 const Categoria = require('../models/categoria');
-const producto = require('../models/producto');
+const Producto = require('../models/producto');
 const Role = require('../models/role')
 const Usuario = require('../models/usuario')
 
@@ -46,7 +46,7 @@ const existeCategoria = async(id = '')=>{
 
 const existeProducto = async(id = '')=>{
 
-    const Existeprod = await producto.findById( id );
+    const Existeprod = await Producto.findById( id );
 
     if(!Existeprod){
         throw new Error (`El id: ${ id } no existe`);
