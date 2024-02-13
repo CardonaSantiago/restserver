@@ -13,6 +13,7 @@ class Server{
         this.authPath = '/api/auth';
         this.categoriasPath = '/api/categorias';
         this.productosPath = '/api/productos';
+        this.buscarPath = '/api/buscar';
 
         //conectar a BD
         this.conectarDB();
@@ -48,6 +49,7 @@ class Server{
         this.app.use(this.usuariosPath,require('../routes/usuarios.routes'));
         this.app.use(this.categoriasPath,require('../routes/categorias.routes'));
         this.app.use(this.productosPath,require('../routes/productos.routes.js'));
+        this.app.use(this.buscarPath, require('../routes/buscar.routes.js'));
         
     }
 
