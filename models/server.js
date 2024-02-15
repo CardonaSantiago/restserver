@@ -14,6 +14,7 @@ class Server{
         this.categoriasPath = '/api/categorias';
         this.productosPath = '/api/productos';
         this.buscarPath = '/api/buscar';
+        this.uploadsPath = '/api/cargarArchivo';
 
         //conectar a BD
         this.conectarDB();
@@ -50,6 +51,7 @@ class Server{
         this.app.use(this.categoriasPath,require('../routes/categorias.routes'));
         this.app.use(this.productosPath,require('../routes/productos.routes.js'));
         this.app.use(this.buscarPath, require('../routes/buscar.routes.js'));
+        this.app.use(this.uploadsPath,require('../routes/uploads.routes'));
         
     }
 

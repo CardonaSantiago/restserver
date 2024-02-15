@@ -64,8 +64,6 @@ const buscarCategorias = async(termino = '', res = response)=>{
 
 const buscarProductos = async(termino = '', res = response)=>{
 
-    
-
     const esMongoID = ObjectId.isValid( termino );
 
     if(esMongoID){
