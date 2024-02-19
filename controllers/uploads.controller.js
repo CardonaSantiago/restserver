@@ -11,11 +11,17 @@ const cargarArchivo = async(req, res =  response)=>{
     return;
     }
 
-    const nombre = await subirArchivo(req.files);
+    try {
+        const nombre = await subirArchivo(req.files,['txt','md'],'textos');
 
     res.json({
         msg: nombre
-    })
+    })    
+    } catch (msg) {
+      res.status(400).json({msg});
+    }
+
+    
      
 }
 
