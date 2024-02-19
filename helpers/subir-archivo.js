@@ -33,6 +33,7 @@ const subirArchivo = (files, extensionesPermitidas = ['png','jpg','jpeg','gif'],
     })
 
     
+    
 }
 
 

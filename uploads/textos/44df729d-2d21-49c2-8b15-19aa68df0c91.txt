@@ -1,0 +1,15 @@
+GitHub
+
+username: CardonaSantiago
+password: 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
+-----------------------------------------------------------
+netlify
+
+password: 31GchQJ2axDlRGdie8GLtToAYNw_RSzR0gPbA_UZgwQ
+
+----------------------------------------------------------
+mysql
+
+password: root1234 <- mala practica en ambito profesional
+-----------------------------------------------------------
+
